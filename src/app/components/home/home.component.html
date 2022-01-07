@@ -1,0 +1,59 @@
+<h3 style="padding-left: 22px;padding-top: 10px;margin-bottom: 0px;">Click on a user to see their statistics</h3>
+<div class="container">
+
+  <div fxLayout="column" fxHide fxShow.gt-sm class="table-container">
+    <mat-table mat-table [dataSource]="userSource"
+               class="mat-elevation-z0">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>UserId</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstname}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastname}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="roleid">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.roleid}} </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumnsUsers sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsUsers;" matRipple (click)="seeUser(row)"></mat-row>
+    </mat-table>
+  </div>
+
+
+  <div class="card-container" fxLayout="column" fxHide fxShow.lt-md >
+    <div *ngFor="let user of cardSource" >
+      <mat-card>
+        <div>UserId: {{user.id}}</div>
+        <div>First Name: {{user.firstname}}</div>
+        <div>Last Name: {{user.lastname}}</div>
+        <div>Email: {{user.email}}</div>
+        <div>Username: {{user.username}}</div>
+        <div>Role: {{user.roleid}}</div>
+      </mat-card>
+    </div>
+  </div>
+
+
+</div>
