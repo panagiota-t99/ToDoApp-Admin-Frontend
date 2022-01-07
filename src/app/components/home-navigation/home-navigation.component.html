@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" class="navbar">
+  <div>ToDos</div>
+  <div>
+    <span><button mat-flat-button color="primary" [routerLink]="['/admin/home']"><mat-icon inline=true>person</mat-icon>Users</button></span>
+    <span><button mat-flat-button color="primary" (click)="logout()"><mat-icon
+      inline=true>logout</mat-icon> Logout</button></span>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
+
+
