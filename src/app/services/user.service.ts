@@ -35,4 +35,26 @@ export class UserService {
           await this.router.navigate(['login']);
     }
   }
+
+  async getLists(userid: any) {
+    try {
+      const res = await this.commonService.getRequest('admin/user/' + userid + '/lists');
+      return res;
+    } catch (e) {
+      if (e instanceof HttpErrorResponse)
+        if (e.status == 401)
+          await this.router.navigate(['login']);
+    }
+  }
+
+  async getItems(userid: any, listname: any) {
+    try {
+      const res = await this.commonService.getRequest('admin/user/' + userid + '/lists/' + listname);
+      return res;
+    } catch (e) {
+      if (e instanceof HttpErrorResponse)
+        if (e.status == 401)
+          await this.router.navigate(['login']);
+    }
+  }
 }

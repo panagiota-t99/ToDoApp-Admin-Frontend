@@ -24,6 +24,10 @@ import { HomeComponent } from './components/home/home.component';
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HomeNavigationComponent } from './components/home-navigation/home-navigation.component';
+import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
+import { ChartsModule } from 'ng2-charts';
+import { UserStatisticsExpandedComponent } from './components/user-statistics-expanded/user-statistics-expanded.component';
+
 
 
 @NgModule({
@@ -31,7 +35,9 @@ import { HomeNavigationComponent } from './components/home-navigation/home-navig
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HomeNavigationComponent
+    HomeNavigationComponent,
+    UserStatisticsComponent,
+    UserStatisticsExpandedComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,7 @@ import { HomeNavigationComponent } from './components/home-navigation/home-navig
     MatToolbarModule,
     MatSelectModule,
     FlexLayoutModule,
-
+    ChartsModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]

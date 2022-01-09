@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
   cardSource: any;
   userid: any;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,9 +42,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  seeUser(row:any)
-  {
-    console.log(row);
+  async seeUser(row: any) {
+    console.log(row.id);
+    localStorage.setItem("currentUser", row.id);
+    await this.router.navigate(['admin/home/user/stats']);
   }
 
 
