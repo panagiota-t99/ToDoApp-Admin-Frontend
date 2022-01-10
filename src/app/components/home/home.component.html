@@ -44,7 +44,7 @@
 
   <div class="card-container" fxLayout="column" fxHide fxShow.lt-md >
     <div *ngFor="let user of cardSource" >
-      <mat-card>
+      <mat-card (click)="seeUser(user)">
         <div>UserId: {{user.id}}</div>
         <div>First Name: {{user.firstname}}</div>
         <div>Last Name: {{user.lastname}}</div>

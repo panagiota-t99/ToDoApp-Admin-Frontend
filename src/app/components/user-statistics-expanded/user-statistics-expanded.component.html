@@ -1,11 +1,17 @@
-<div style="display: none;" id="barChart">
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType"
-          [colors]="chartColors">
-  </canvas>
+<h3>User: {{username}}</h3>
+<h4>Items of list: {{listname}}</h4>
+<div class="container">
+  <div class="graph" style="padding-top: 50px;">
+    <div style="display: none;" id="barChart">
+      <canvas baseChart height="20" width="70"
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [colors]="chartColors">
+      </canvas>
+    </div>
+  </div>
 </div>

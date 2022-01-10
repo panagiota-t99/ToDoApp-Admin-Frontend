@@ -14,9 +14,9 @@ import {Router} from "@angular/router";
 export class UserStatisticsComponent implements OnInit {
 
   private userid: any;
-
+  public username:any
   public pieChartOptions: ChartOptions = {
-    responsive: true,
+    responsive: true, maintainAspectRatio:false
   };
   public pieChartLabels: Label[] = [];
   public pieChartData: SingleDataSet = [];
@@ -31,6 +31,9 @@ export class UserStatisticsComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
+    this.userid = localStorage.getItem("currentUser");
+    this.username= localStorage.getItem("currentUsername");
+    console.log(this.username);
     this.getListStats();
   }
 
@@ -38,7 +41,6 @@ export class UserStatisticsComponent implements OnInit {
   }
 
   async getListStats() {
-    this.userid = localStorage.getItem("currentUser");
     const lists = await this.userService.getLists(this.userid);
 
     if (lists.length) {

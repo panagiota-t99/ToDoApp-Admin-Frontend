@@ -11,7 +11,8 @@ import {Router} from "@angular/router";
 })
 export class UserStatisticsExpandedComponent implements OnInit {
   private userid:any;
-  private listname:any;
+  public listname:any;
+  public username:any;
 
   public barChartOptions = {
     responsive: true,
@@ -33,12 +34,13 @@ export class UserStatisticsExpandedComponent implements OnInit {
   constructor(private userService: UserService,private router: Router) { }
 
   ngOnInit(): void {
+    this.userid = localStorage.getItem("currentUser");
+    this.username= localStorage.getItem("currentUsername");
+    this.listname = localStorage.getItem("currentList");
     this.getItemStats();
   }
 
   async getItemStats() {
-    this.userid = localStorage.getItem("currentUser");
-    this.listname = localStorage.getItem("currentList");
     const items = await this.userService.getItems(this.userid,this.listname);
     var counts = [];
     if (items.length) {

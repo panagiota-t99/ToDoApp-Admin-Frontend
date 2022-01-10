@@ -27,6 +27,8 @@ import { HomeNavigationComponent } from './components/home-navigation/home-navig
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
 import { ChartsModule } from 'ng2-charts';
 import { UserStatisticsExpandedComponent } from './components/user-statistics-expanded/user-statistics-expanded.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -60,6 +62,12 @@ import { UserStatisticsExpandedComponent } from './components/user-statistics-ex
     MatSelectModule,
     FlexLayoutModule,
     ChartsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]

@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   }
 
   async seeUser(row: any) {
-    console.log(row.id);
     localStorage.setItem("currentUser", row.id);
+    localStorage.setItem("currentUsername", row.username);
     await this.router.navigate(['admin/home/user/stats']);
   }
 
