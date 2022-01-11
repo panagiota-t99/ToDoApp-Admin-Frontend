@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {UserService} from "../../services/user.service";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService,readonly snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
 
         }
       } catch ({message}) {
-        alert(message);
+        // @ts-ignore
+        this.snackBar.open(message,"Dismiss");
       }
     } else
       alert("Please fill in the form!");

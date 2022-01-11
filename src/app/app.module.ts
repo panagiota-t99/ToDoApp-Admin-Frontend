@@ -29,6 +29,7 @@ import { ChartsModule } from 'ng2-charts';
 import { UserStatisticsExpandedComponent } from './components/user-statistics-expanded/user-statistics-expanded.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 
@@ -61,6 +62,7 @@ import { environment } from '../environments/environment';
     MatToolbarModule,
     MatSelectModule,
     FlexLayoutModule,
+    MatSnackBarModule,
     ChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
